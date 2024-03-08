@@ -54,11 +54,11 @@ export default function Trending() {
 
     return (
         <div>
-            <div className="flex pb-4 gap-4">
-                <h2 className="scroll-m-20 pb-1 text-3xl font-semibold tracking-tight first:mt-0 px-6 md:px-12">
+            <div className="flex pb-4">
+                <h2 className="scroll-m-20 pb-1 text-xl lg:text-3xl font-semibold tracking-tight first:mt-0 px-4 md:px-12">
                     Trending
                 </h2>
-                <div className="flex gap-4">
+                <div className="flex gap-1">
                     <Button
                         variant={isMovie ? "default" : "secondary"}
                         onClick={(e) => handleButtonClick(true, e)}
