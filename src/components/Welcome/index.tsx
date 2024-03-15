@@ -2,7 +2,7 @@ import React from "react";
 
 export default function Welcome() {
     return (
-        <div className="flex-col flex justify-center text-center min-h-[65vh] px-4 md:px-10 lg:px-20 mt-[-100px]">
+        <div className="flex-col flex justify-center text-center min-h-[65vh] px-4 md:px-10 lg:px-20 mt-[-100px] w-[75%]">
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-extrabold pb-4 tracking-tighter md:flex md:flex-col">
                 Welcome to{" "}
                 <span className="bg-gradient-to-r from-indigo-500 from-10% via-sky-500 via-30% to-emerald-500 to-90% text-transparent bg-clip-text font-black">

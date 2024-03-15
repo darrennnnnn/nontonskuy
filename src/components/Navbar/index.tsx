@@ -65,7 +65,7 @@ export default function Navbar() {
                     <input
                         type="text"
                         placeholder="Search..."
-                        className=" py-1 px-4 rounded-md border-none appearance-none focus:outline-none focus:placeholder:text-gray-300 w-32"
+                        className=" py-1 px-4 rounded-md border-none appearance-none focus:outline-none focus:placeholder:text-gray-300 w-32 lg:w-64"
                     />
                     <AlignJustify
                         className="cursor-pointer md:hidden"
