@@ -18,7 +18,7 @@ interface SimilarProps {
 }
 
 export default function SimilarMovie({ id }: SimilarProps) {
-    const [similar, setSimilar] = useState<SimilarMovie[]>([]);
+    const [similar, setSimilar] = useState<SimilarShow[]>([]);
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
