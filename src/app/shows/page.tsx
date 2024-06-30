@@ -1,4 +1,4 @@
-"use client"
+"use client";
 
 import { useEffect, useState } from "react";
 import axios from "axios";
@@ -36,7 +36,7 @@ export default function MoviePage() {
                     `https://api.themoviedb.org/3/tv/top_rated`,
                     {
                         params: {
-                            api_key: process.env.NEXT_PUBLIC_API_KEY,
+                            api_key: "298159914b2ce37be28ba2eca317b6f3",
                             region: "US",
                             page: page,
                         },
