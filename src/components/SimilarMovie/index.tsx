@@ -25,11 +25,10 @@ export default function SimilarMovie({ id }: SimilarProps) {
         const fetchSimilar = async () => {
             try {
                 const response = await axios.get(
-                    `https://api.themoviedb.org/3/movie/${id}/recommendations?api_key=298159914b2ce37be28ba2eca317b6f3&region=US`
+                    `https://api.themoviedb.org/3/movie/372058/recommendations?api_key=298159914b2ce37be28ba2eca317b6f3&language=en-US`
                 );
                 setSimilar(response.data.results);
                 setLoading(false);
-                console.log(id);
             } catch (error) {
                 console.log(error);
                 setLoading(false);

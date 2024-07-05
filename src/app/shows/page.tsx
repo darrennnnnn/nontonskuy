@@ -157,7 +157,7 @@ export default function MoviePage() {
                                     imageLink={item.poster_path}
                                     date={item.first_air_date}
                                     vote={item.vote_average}
-                                    isMovie={true}
+                                    isMovie={false}
                                 />
                             </div>
                         ))}
