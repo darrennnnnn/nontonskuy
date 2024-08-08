@@ -1,4 +1,4 @@
-"use client"
+"use client";
 
 import { useEffect, useState } from "react";
 import axios from "axios";
@@ -33,10 +33,10 @@ export default function MoviePage() {
             try {
                 setLoading(true);
                 const response = await axios.get(
-                    `https://api.themoviedb.org/3/movie/top_rated`,
+                    `${process.env.NEXT_PUBLIC_API_URL}/movie/top_rated`,
                     {
                         params: {
-                            api_key: "298159914b2ce37be28ba2eca317b6f3",
+                            api_key: process.env.NEXT_PUBLIC_API_KEY,
                             region: "US",
                             page: page,
                         },

@@ -25,7 +25,7 @@ export default function Searched({
         const fetchTrending = async () => {
             try {
                 const response = await axios.get(
-                    `https://api.themoviedb.org/3/search/movie?query=${params.id}&api_key=298159914b2ce37be28ba2eca317b6f3&region=US`
+                    `${process.env.NEXT_PUBLIC_API_URL}/search/movie?query=${params.id}&api_key=${process.env.NEXT_PUBLIC_API_KEY}&region=US`
                 );
                 setContent(response.data.results);
                 setLoading(false);

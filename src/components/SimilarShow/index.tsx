@@ -25,7 +25,7 @@ export default function SimilarMovie({ id }: SimilarProps) {
         const fetchSimilar = async () => {
             try {
                 const response = await axios.get(
-                    `https://api.themoviedb.org/3/tv/${id}/recommendations?api_key=298159914b2ce37be28ba2eca317b6f3&region=US`
+                    `${process.env.NEXT_PUBLIC_API_URL}/tv/${id}/recommendations?api_key=${process.env.NEXT_PUBLIC_API_KEY}&region=US`
                 );
                 setSimilar(response.data.results);
                 setLoading(false);

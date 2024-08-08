@@ -41,7 +41,7 @@ export default function MovieInfo({
         const fetchDetails = async () => {
             try {
                 const response = await axios.get(
-                    `https://api.themoviedb.org/3/movie/${id}?api_key=298159914b2ce37be28ba2eca317b6f3&region=US`
+                    `${process.env.NEXT_PUBLIC_API_URL}/movie/${id}?api_key=${process.env.NEXT_PUBLIC_API_KEY}&region=US`
                 );
                 setDetails(response.data);
                 setLoading(false);
@@ -57,7 +57,7 @@ export default function MovieInfo({
     if (loading) {
         return (
             <div className="flex justify-center items-center h-screen">
-                <LoaderCircle className="animate-spin w-20 h-20"/>
+                <LoaderCircle className="animate-spin w-20 h-20" />
             </div>
         );
     }
