@@ -5,6 +5,7 @@ import { Badge } from "@/components/ui/badge";
 import axios from "axios";
 import Image from "next/image";
 import SimilarShow from "@/components/SimilarShow";
+import { LoaderCircle } from "lucide-react";
 
 interface ShowDetails {
     id: number;
@@ -52,7 +53,11 @@ export default function ShowInfo({
     }, [params.showsId]);
 
     if (loading) {
-        return <div>Loading...</div>;
+        return (
+            <div className="flex justify-center items-center h-screen">
+                <LoaderCircle className="animate-spin w-20 h-20" />
+            </div>
+        );
     }
 
     return (
