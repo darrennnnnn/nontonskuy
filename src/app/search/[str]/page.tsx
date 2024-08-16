@@ -39,7 +39,7 @@ export default function Searched({
     }, []);
 
     return (
-        <div className="w-full mb-10">
+        <div className="w-full my-10">
             <div className="flex pb-4 items-center">
                 <h2 className="pb-1 text-xl lg:text-3xl font-semibold px-2 lg:pl-[13rem] pr-4 ">
                     Search Results for: {searchQuery}
