@@ -24,10 +24,8 @@ export default function SimilarMovie({ id }: SimilarProps) {
     useEffect(() => {
         const fetchSimilar = async () => {
             try {
-                const response = await axios.get(
-                    `${process.env.NEXT_PUBLIC_API_URL}/movie/${id}/recommendations?api_key=${process.env.NEXT_PUBLIC_API_KEY}&language=en-US`
-                );
-                setSimilar(response.data.results);
+                const response = await axios.get(`/api/similarmovie?id=${id}`);
+                setSimilar(response.data);
                 setLoading(false);
             } catch (error) {
                 console.log(error);

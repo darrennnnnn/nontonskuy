@@ -40,9 +40,7 @@ export default function MovieInfo({
     useEffect(() => {
         const fetchDetails = async () => {
             try {
-                const response = await axios.get(
-                    `${process.env.NEXT_PUBLIC_API_URL}/movie/${id}?api_key=${process.env.NEXT_PUBLIC_API_KEY}&region=US`
-                );
+                const response = await axios.get(`/api/movie/details?id=${id}`);
                 setDetails(response.data);
                 setLoading(false);
             } catch (error) {

@@ -27,8 +27,6 @@ export default function ShowInfo({
     const [details, setDetails] = useState<ShowDetails | null>(null);
     const [loading, setLoading] = useState(true);
 
-    const id = params.showsId;
-
     const runtimeInMinutes = details?.episode_run_time || 0;
 
     const hours = Math.floor(runtimeInMinutes / 60);
@@ -40,11 +38,10 @@ export default function ShowInfo({
         const fetchDetails = async () => {
             try {
                 const response = await axios.get(
-                    `${process.env.NEXT_PUBLIC_API_URL}/tv/${id}?api_key=${process.env.NEXT_PUBLIC_API_KEY}&language=en-US`
+                    `/api/shows/details?id=${params.showsId}`
                 );
                 setDetails(response.data);
                 setLoading(false);
-                console.log(response.data);
             } catch (error) {
                 console.log(error);
                 setLoading(false);
@@ -52,7 +49,7 @@ export default function ShowInfo({
         };
         setLoading(true);
         fetchDetails();
-    }, [id]);
+    }, [params.showsId]);
 
     if (loading) {
         return <div>Loading...</div>;
@@ -117,7 +114,7 @@ export default function ShowInfo({
                 </div>
             </div>
             <div className="flex items-center justify-center w-3/4">
-                <SimilarShow id={id} />
+                <SimilarShow id={params.showsId} />
             </div>
         </div>
     );

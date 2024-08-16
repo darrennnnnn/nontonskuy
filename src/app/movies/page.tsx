@@ -32,16 +32,7 @@ export default function MoviePage() {
         const fetchMovies = async () => {
             try {
                 setLoading(true);
-                const response = await axios.get(
-                    `${process.env.NEXT_PUBLIC_API_URL}/movie/top_rated`,
-                    {
-                        params: {
-                            api_key: process.env.NEXT_PUBLIC_API_KEY,
-                            region: "US",
-                            page: page,
-                        },
-                    }
-                );
+                const response = await axios.get(`/api/movie?page=${page}`);
                 setContent(response.data.results);
                 setTotalPages(response.data.total_pages);
                 setLoading(false);

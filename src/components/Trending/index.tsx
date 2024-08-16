@@ -33,12 +33,13 @@ export default function Trending() {
             try {
                 const endpoint = isMovie ? "movie" : "tv";
                 const response = await axios.get(
-                    `${process.env.NEXT_PUBLIC_API_URL}/trending/${endpoint}/week?api_key=${process.env.NEXT_PUBLIC_API_KEY}`
+                    `/api/trending?type=${endpoint}`
                 );
-                setContent(response.data.results);
+                setContent(response.data);
                 setLoading(false);
             } catch (error) {
                 console.log(error);
+                setLoading(false)
             }
         };
         setLoading(true);

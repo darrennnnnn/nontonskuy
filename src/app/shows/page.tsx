@@ -13,7 +13,7 @@ import {
 } from "@/components/ui/pagination";
 import MovieCard from "@/components/MovieCard";
 
-interface Movie {
+interface Shows {
     id: number;
     name: string;
     poster_path: string;
@@ -21,8 +21,8 @@ interface Movie {
     vote_average: string;
 }
 
-export default function MoviePage() {
-    const [content, setContent] = useState<Movie[]>([]);
+export default function ShowsPage() {
+    const [content, setContent] = useState<Shows[]>([]);
     const [loading, setLoading] = useState(true);
     const [page, setPage] = useState(1);
     const [totalPages, setTotalPages] = useState(0);
@@ -32,16 +32,7 @@ export default function MoviePage() {
         const fetchMovies = async () => {
             try {
                 setLoading(true);
-                const response = await axios.get(
-                    `${process.env.NEXT_PUBLIC_API_URL}/tv/top_rated`,
-                    {
-                        params: {
-                            api_key: process.env.NEXT_PUBLIC_API_KEY,
-                            region: "US",
-                            page: page,
-                        },
-                    }
-                );
+                const response = await axios.get(`/api/shows?page=${page}`);
                 setContent(response.data.results);
                 setTotalPages(response.data.total_pages);
                 setLoading(false);

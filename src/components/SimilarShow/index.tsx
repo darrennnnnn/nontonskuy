@@ -24,12 +24,9 @@ export default function SimilarMovie({ id }: SimilarProps) {
     useEffect(() => {
         const fetchSimilar = async () => {
             try {
-                const response = await axios.get(
-                    `${process.env.NEXT_PUBLIC_API_URL}/tv/${id}/recommendations?api_key=${process.env.NEXT_PUBLIC_API_KEY}&region=US`
-                );
-                setSimilar(response.data.results);
+                const response = await axios.get(`/api/similarshow?id=${id}`);
+                setSimilar(response.data);
                 setLoading(false);
-                console.log(id);
             } catch (error) {
                 console.log(error);
                 setLoading(false);

@@ -15,25 +15,23 @@ interface Movie {
 export default function Searched({
     params,
 }: {
-    readonly params: { id: string };
+    readonly params: { str: string };
 }) {
     const [content, setContent] = useState<Movie[]>([]);
     const [loading, setLoading] = useState(true);
-    const searchQuery = decodeURIComponent(params.id);
+    const searchQuery = decodeURIComponent(params.str);
 
     useEffect(() => {
         const fetchTrending = async () => {
             try {
                 const response = await axios.get(
-                    `${process.env.NEXT_PUBLIC_API_URL}/search/movie?query=${params.id}&api_key=${process.env.NEXT_PUBLIC_API_KEY}&region=US`
+                    `/api/search?str=${searchQuery}`
                 );
-                setContent(response.data.results);
+                setContent(response.data);
                 setLoading(false);
-                console.log(params.id);
-                console.log(response);
             } catch (error) {
                 console.log(error);
-                setLoading(false)
+                setLoading(false);
             }
         };
         setLoading(true);

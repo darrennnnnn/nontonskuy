@@ -21,9 +21,9 @@ export default function Upcoming() {
         const fetchUpcoming = async () => {
             try {
                 const response = await axios.get(
-                    `${process.env.NEXT_PUBLIC_API_URL}/movie/upcoming?api_key=${process.env.NEXT_PUBLIC_API_KEY}&region=US`
+                    '/api/upcoming'
                 );
-                setContent(response.data.results);
+                setContent(response.data);
                 setLoading(false);
             } catch (error) {
                 console.log(error);
