@@ -12,7 +12,7 @@ export default function SearchBar() {
     };
 
     return (
-        <div>
+        <div className="transform transition-transform focus-within:scale-105">
             <form onSubmit={handleSubmit}>
                 <Input
                     type="text"

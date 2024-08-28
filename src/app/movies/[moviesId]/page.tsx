@@ -6,19 +6,7 @@ import axios from "axios";
 import Image from "next/image";
 import SimilarMovie from "@/components/SimilarMovie";
 import { LoaderCircle } from "lucide-react";
-
-interface MovieDetails {
-    id: number;
-    title: string;
-    poster_path: string;
-    release_date: string;
-    vote_average: string;
-    overview: string;
-    runtime: number;
-    genres: { id: number; name: string }[];
-    tagline: string;
-    backdrop_path: string;
-}
+import { MovieDetails } from "@/lib/types";
 
 export default function MovieInfo({
     params,

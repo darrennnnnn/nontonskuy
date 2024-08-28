@@ -6,19 +6,8 @@ import axios from "axios";
 import Image from "next/image";
 import SimilarShow from "@/components/SimilarShow";
 import { LoaderCircle } from "lucide-react";
+import { ShowDetails } from "@/lib/types";
 
-interface ShowDetails {
-    id: number;
-    name: string;
-    poster_path: string;
-    first_air_date: string;
-    vote_average: string;
-    overview: string;
-    episode_run_time: number;
-    genres: { id: number; name: string }[];
-    tagline: string;
-    backdrop_path: string;
-}
 //
 export default function ShowInfo({
     params,

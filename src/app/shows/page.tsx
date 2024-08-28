@@ -12,14 +12,7 @@ import {
     PaginationPrevious,
 } from "@/components/ui/pagination";
 import MovieCard from "@/components/MovieCard";
-
-interface Shows {
-    id: number;
-    name: string;
-    poster_path: string;
-    first_air_date: string;
-    vote_average: string;
-}
+import { Shows } from "@/lib/types";
 
 export default function ShowsPage() {
     const [content, setContent] = useState<Shows[]>([]);

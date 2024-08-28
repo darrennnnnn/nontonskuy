@@ -3,14 +3,7 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
 import MovieCard from "@/components/MovieCard";
-
-interface Movie {
-    id: number;
-    title: string;
-    poster_path: string;
-    release_date: string;
-    vote_average: string;
-}
+import { Movie } from "@/lib/types";
 
 export default function Searched({
     params,

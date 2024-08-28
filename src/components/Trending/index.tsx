@@ -1,27 +1,12 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import MovieCard from "../MovieCard";
+import CardList from "../CardList";
 import { Button } from "../ui/button";
 import axios from "axios";
 import { Clapperboard, Tv } from "lucide-react";
-import CardSkeleton from "../CardSkeleton";
-
-interface Movie {
-    id: number;
-    title: string;
-    poster_path: string;
-    release_date: string;
-    vote_average: string;
-}
-
-interface Shows {
-    id: number;
-    name: string;
-    poster_path: string;
-    first_air_date: string;
-    vote_average: string;
-}
+import { Movie, Shows } from "@/lib/types";
+import SkeletonList from "../SkeletonList";
 
 export default function Trending() {
     const [content, setContent] = useState<(Movie | Shows)[]>([]);
@@ -39,7 +24,7 @@ export default function Trending() {
                 setLoading(false);
             } catch (error) {
                 console.log(error);
-                setLoading(false)
+                setLoading(false);
             }
         };
         setLoading(true);
@@ -54,11 +39,12 @@ export default function Trending() {
         setIsMovie(isMovie);
     };
     return (
-        <div className="w-screen my-12">
-            <div className="flex gap-1 lg:gap-6">
-                <p className="text-3xl">Trending</p>
+        <div className="my-8">
+            <div className="flex gap-3 items-center my-2">
+                <p className="text-2xl">Trending</p>
                 <div className="flex gap-2">
                     <Button
+                        size={"sm"}
                         variant={isMovie ? "default" : "secondary"}
                         onClick={(e) => handleButtonClick(true, e)}
                     >
@@ -66,6 +52,7 @@ export default function Trending() {
                         Movies
                     </Button>
                     <Button
+                        size={"sm"}
                         variant={isMovie ? "secondary" : "default"}
                         onClick={(e) => handleButtonClick(false, e)}
                     >
@@ -74,42 +61,11 @@ export default function Trending() {
                     </Button>
                 </div>
             </div>
-            <div className="flex justify-center items-center max-w-screen-2xl mx-auto my-4">
+            <div className="flex justify-center">
                 {loading ? (
-                    <div className="grid grid-cols-2 lg:grid-cols-4 xl:grid-cols-6 gap-4">
-                        {Array.from({ length: 20 }).map((_, index) => (
-                            <CardSkeleton key={index} />
-                        ))}
-                    </div>
+                    <SkeletonList count={20} />
                 ) : (
-                    <div className="grid grid-cols-2 lg:grid-cols-4 xl:grid-cols-6 gap-4">
-                        {content.map((item) => (
-                            <div
-                                key={item.id}
-                                className="items-center justify-center flex flex-wrap rounded-lg transform transition-transform hover:scale-105"
-                            >
-                                {isMovie ? (
-                                    <MovieCard
-                                        title={(item as Movie).title}
-                                        id={(item as Movie).id}
-                                        imageLink={(item as Movie).poster_path}
-                                        date={(item as Movie).release_date}
-                                        vote={(item as Movie).vote_average}
-                                        isMovie={true}
-                                    />
-                                ) : (
-                                    <MovieCard
-                                        title={(item as Shows).name}
-                                        id={(item as Shows).id}
-                                        imageLink={(item as Shows).poster_path}
-                                        date={(item as Shows).first_air_date}
-                                        vote={(item as Shows).vote_average}
-                                        isMovie={false}
-                                    />
-                                )}
-                            </div>
-                        ))}
-                    </div>
+                    <CardList content={content} isMovie={isMovie} />
                 )}
             </div>
         </div>

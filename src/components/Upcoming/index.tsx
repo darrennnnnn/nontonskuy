@@ -1,17 +1,10 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import MovieCard from "../MovieCard";
 import axios from "axios";
-import CardSkeleton from "../CardSkeleton";
-
-interface Movie {
-    id: number;
-    title: string;
-    poster_path: string;
-    release_date: string;
-    vote_average: string;
-}
+import { Movie } from "@/lib/types";
+import SkeletonList from "../SkeletonList";
+import CardList from "../CardList";
 
 export default function Upcoming() {
     const [content, setContent] = useState<Movie[]>([]);
@@ -20,9 +13,7 @@ export default function Upcoming() {
     useEffect(() => {
         const fetchUpcoming = async () => {
             try {
-                const response = await axios.get(
-                    '/api/upcoming'
-                );
+                const response = await axios.get("/api/upcoming");
                 setContent(response.data);
                 setLoading(false);
             } catch (error) {
@@ -35,35 +26,13 @@ export default function Upcoming() {
     }, []);
 
     return (
-        <div className="w-screen my-12">
-            <div className="flex gap-1 lg:gap-6">
-                <p className="text-3xl">Upcoming</p>
-            </div>
-            <div className="flex justify-center items-center max-w-screen-2xl mx-auto my-4">
+        <div className="my-8">
+            <p className="text-2xl my-2">Upcoming</p>
+            <div className="flex justify-center">
                 {loading ? (
-                    <div className="grid grid-cols-2 lg:grid-cols-4 xl:grid-cols-6 gap-4">
-                        {Array.from({ length: 20 }).map((_, index) => (
-                            <CardSkeleton key={index} />
-                        ))}
-                    </div>
+                    <SkeletonList count={20} />
                 ) : (
-                    <div className="grid grid-cols-2 lg:grid-cols-4 xl:grid-cols-6 gap-4">
-                        {content.map((item) => (
-                            <div
-                                key={item.id}
-                                className="items-center justify-center flex flex-wrap rounded-lg transform transition-transform hover:scale-105"
-                            >
-                                <MovieCard
-                                    title={(item).title}
-                                    id={(item).id}
-                                    imageLink={(item).poster_path}
-                                    date={(item).release_date}
-                                    vote={(item).vote_average}  
-                                    isMovie={true}
-                                />
-                            </div>
-                        ))}
-                    </div>
+                    <CardList content={content} isMovie={true} />
                 )}
             </div>
         </div>

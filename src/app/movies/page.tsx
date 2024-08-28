@@ -12,14 +12,7 @@ import {
     PaginationPrevious,
 } from "@/components/ui/pagination";
 import MovieCard from "@/components/MovieCard";
-
-interface Movie {
-    id: number;
-    title: string;
-    poster_path: string;
-    release_date: string;
-    vote_average: string;
-}
+import { Movie } from "@/lib/types";
 
 export default function MoviePage() {
     const [content, setContent] = useState<Movie[]>([]);

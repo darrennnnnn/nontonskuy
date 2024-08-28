@@ -4,21 +4,10 @@ import { useEffect, useState } from "react";
 import MovieCard from "../MovieCard";
 import axios from "axios";
 import CardSkeleton from "../CardSkeleton";
+import { Shows, SimilarProps } from "@/lib/types";
 
-interface SimilarShow {
-    id: number;
-    name: string;
-    poster_path: string;
-    first_air_date: string;
-    vote_average: string;
-}
-
-interface SimilarProps {
-    readonly id: string;
-}
-
-export default function SimilarMovie({ id }: SimilarProps) {
-    const [similar, setSimilar] = useState<SimilarShow[]>([]);
+export default function SimilarMovie({ id }: Readonly<SimilarProps>) {
+    const [similar, setSimilar] = useState<Shows[]>([]);
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {

@@ -1,17 +1,17 @@
-import Welcome from "@/components/Welcome";
 import Trending from "@/components/Trending";
 import Upcoming from "@/components/Upcoming";
+import { PlayingNow } from "@/components/PlayingNow";
 
 export default function Home() {
     return (
-        <main className="flex items-center flex-col">
-            <div className="flex justify-center w-3/4">
-                <Welcome />
+        <main className="flex items-center flex-col max-w-screen-2xl mx-auto">
+            <div>
+                <PlayingNow />
             </div>
-            <div className="flex items-center justify-center w-3/4">
+            <div>
                 <Trending />
             </div>
-            <div className="flex items-center justify-center w-3/4">
+            <div>
                 <Upcoming />
             </div>
         </main>
