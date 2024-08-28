@@ -6,6 +6,8 @@ export interface Shows {
     vote_average: string;
     overview: string;
     backdrop_path: string;
+    genre_ids: { id: number }[];
+    vote_count: string;
 }
 
 export interface ShowDetails {
@@ -29,6 +31,8 @@ export interface Movie {
     vote_average: string;
     overview: string;
     backdrop_path: string;
+    genre_ids: { id: number }[];
+    vote_count: string;
 }
 
 export interface MovieDetails {

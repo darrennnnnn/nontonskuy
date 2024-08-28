@@ -15,7 +15,7 @@ export default function MovieCard({
     const roundedVote = parseFloat(vote).toFixed(1);
     const movieOrShowLink = isMovie ? "/movies" : "/shows";
     const imageUrl = `https://image.tmdb.org/t/p/w500/${imageLink}`;
-
+    
     return (
         <div className=" border border-solid rounded-md w-44 p-2 transform transition-transform hover:scale-105">
             <Link href={`${movieOrShowLink}/${id}`}>
