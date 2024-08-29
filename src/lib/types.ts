@@ -69,3 +69,11 @@ export interface CardListProps {
     content: (Movie | Shows)[];
     isMovie: boolean;
 }
+
+export interface Videos {
+    official: boolean;
+    site: string;
+    key: string;
+    name: string;
+    type: string;
+}

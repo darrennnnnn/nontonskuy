@@ -40,8 +40,10 @@ export default function Trending() {
     };
     return (
         <div className="my-8">
-            <div className="flex gap-3 items-center my-2">
-                <p className="text-2xl">Trending</p>
+            <div className="flex gap-3 items-center my-3">
+                <h3 className="scroll-m-20 text-2xl font-semibold tracking-tight">
+                    Trending
+                </h3>
                 <div className="flex gap-2">
                     <Button
                         size={"sm"}

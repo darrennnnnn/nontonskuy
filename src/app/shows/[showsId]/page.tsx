@@ -17,6 +17,8 @@ export default function ShowInfo({
     const [details, setDetails] = useState<ShowDetails | null>(null);
     const [loading, setLoading] = useState(true);
 
+    const id = params.showsId;
+
     const runtimeInMinutes = details?.episode_run_time || 0;
 
     const hours = Math.floor(runtimeInMinutes / 60);
@@ -27,9 +29,7 @@ export default function ShowInfo({
     useEffect(() => {
         const fetchDetails = async () => {
             try {
-                const response = await axios.get(
-                    `/api/shows/details?id=${params.showsId}`
-                );
+                const response = await axios.get(`/api/shows/details?id=${id}`);
                 setDetails(response.data);
                 setLoading(false);
             } catch (error) {
@@ -39,7 +39,7 @@ export default function ShowInfo({
         };
         setLoading(true);
         fetchDetails();
-    }, [params.showsId]);
+    }, [id]);
 
     if (loading) {
         return (
@@ -51,7 +51,10 @@ export default function ShowInfo({
 
     return (
         <div className="flex flex-col justify-center items-center">
-            <div
+            <div className="flex items-center justify-center w-full">
+                <SimilarShow id={id} />
+            </div>
+            {/* <div
                 className="flex items-center flex-col py-10 relative"
                 style={{
                     minHeight: "400px",
@@ -109,7 +112,7 @@ export default function ShowInfo({
             </div>
             <div className="flex items-center justify-center w-3/4">
                 <SimilarShow id={params.showsId} />
-            </div>
+            </div> */}
         </div>
     );
 }

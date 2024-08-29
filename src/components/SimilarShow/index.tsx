@@ -1,12 +1,12 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import MovieCard from "../MovieCard";
 import axios from "axios";
-import CardSkeleton from "../CardSkeleton";
 import { Shows, SimilarProps } from "@/lib/types";
+import SkeletonList from "../SkeletonList";
+import CardList from "../CardList";
 
-export default function SimilarMovie({ id }: Readonly<SimilarProps>) {
+export default function SimilarShow({ id }: Readonly<SimilarProps>) {
     const [similar, setSimilar] = useState<Shows[]>([]);
     const [loading, setLoading] = useState(true);
 
@@ -25,47 +25,17 @@ export default function SimilarMovie({ id }: Readonly<SimilarProps>) {
         fetchSimilar();
     }, [id]);
 
-    const renderContent = () => {
-        if (loading) {
-            return (
-                <div className="grid grid-cols-2 lg:grid-cols-4 xl:grid-cols-6 gap-4">
-                    {Array.from({ length: 20 }).map((_, index) => (
-                        <CardSkeleton key={index} />
-                    ))}
-                </div>
-            );
-        } else if (similar.length === 0) {
-            return <p>No Similar Movies Found</p>;
-        } else {
-            return (
-                <div className="grid grid-cols-2 lg:grid-cols-4 xl:grid-cols-6 gap-4">
-                    {similar.map((item) => (
-                        <div
-                            key={item.id}
-                            className="items-center justify-center flex flex-wrap rounded-lg transform transition-transform hover:scale-105"
-                        >
-                            <MovieCard
-                                title={item.name}
-                                id={item.id}
-                                imageLink={item.poster_path}
-                                date={item.first_air_date}
-                                vote={item.vote_average}
-                                isMovie={false}
-                            />
-                        </div>
-                    ))}
-                </div>
-            );
-        }
-    };
-
     return (
-        <div className="w-screen my-12">
-            <div className="flex gap-1 lg:gap-6">
-                <p className="text-3xl">Similar</p>
-            </div>
-            <div className="flex justify-center items-center max-w-screen-2xl mx-auto my-4">
-                {renderContent()}
+        <div className="my-8">
+            <h3 className="scroll-m-20 text-2xl font-semibold tracking-tight my-3">
+                Similar Movies
+            </h3>
+            <div className="flex justify-center">
+                {loading ? (
+                    <SkeletonList count={20} />
+                ) : (
+                    <CardList content={similar} isMovie={false} />
+                )}
             </div>
         </div>
     );

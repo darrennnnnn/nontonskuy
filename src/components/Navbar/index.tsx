@@ -6,7 +6,7 @@ import { ModeToggle } from "../ModeToggle";
 
 export default function Navbar() {
     return (
-        <div className="flex border-b w-full">
+        <div className="flex border-b w-full px-4">
             <nav className="flex justify-between items-center w-full mx-auto max-w-screen-2xl h-16">
                 <div>
                     <p className="font-extrabold text-l lg:text-2xl bg-gradient-to-r from-indigo-500 from-1% via-sky-500 via-30% to-emerald-500 to-90% text-transparent bg-clip-text font-black">

@@ -25,7 +25,6 @@ export function PlayingNow() {
             try {
                 const response = await axios.get("/api/playingnow");
                 setContent(response.data);
-                console.log(response.data);
                 setLoading(false);
             } catch (error) {
                 console.log(error);

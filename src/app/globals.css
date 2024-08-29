@@ -68,9 +68,9 @@
         --input: 217.2 32.6% 17.5%;
         --ring: 212.7 26.8% 83.9%;
 
-        --carousel-bg: rgb(0, 0, 0);
-        --overlay-light: rgba(0, 0, 0, 0.5);
-        --overlay-dark: #000000;
+        --carousel-bg: rgb(2, 8, 23);
+        --overlay-light: rgba(2, 8, 23, 0.5);
+        --overlay-dark: rgb(2, 8, 23);
     }
 }
 

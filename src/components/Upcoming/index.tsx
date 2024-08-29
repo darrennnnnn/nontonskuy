@@ -27,7 +27,9 @@ export default function Upcoming() {
 
     return (
         <div className="my-8">
-            <p className="text-2xl my-2">Upcoming</p>
+            <h3 className="scroll-m-20 text-2xl font-semibold tracking-tight my-3">
+                Coming Soon
+            </h3>
             <div className="flex justify-center">
                 {loading ? (
                     <SkeletonList count={20} />
