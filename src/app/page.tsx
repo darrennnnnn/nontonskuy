@@ -1,6 +1,6 @@
-import Trending from "@/components/Trending";
-import Upcoming from "@/components/Upcoming";
-import { PlayingNow } from "@/components/PlayingNow";
+import Trending from "@/components/MainPage/Trending";
+import Upcoming from "@/components/MainPage/Upcoming";
+import { PlayingNow } from "@/components/MainPage/PlayingNow";
 
 export default function Home() {
     return (

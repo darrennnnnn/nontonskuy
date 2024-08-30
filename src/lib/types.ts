@@ -15,9 +15,24 @@ export interface ShowDetails {
     name: string;
     poster_path: string;
     first_air_date: string;
-    vote_average: string;
+    vote_average: number;
     overview: string;
-    episode_run_time: number;
+    genres: { id: number; name: string }[];
+    tagline: string;
+    backdrop_path: string;
+    status: string;
+    number_of_seasons: number;
+    number_of_episodes: number;
+    seasons: Season[];
+}
+export interface MovieDetails {
+    id: number;
+    title: string;
+    poster_path: string;
+    release_date: string;
+    vote_average: number;
+    overview: string;
+    runtime: number;
     genres: { id: number; name: string }[];
     tagline: string;
     backdrop_path: string;
@@ -35,25 +50,12 @@ export interface Movie {
     vote_count: string;
 }
 
-export interface MovieDetails {
-    id: number;
-    title: string;
-    poster_path: string;
-    release_date: string;
-    vote_average: string;
-    overview: string;
-    runtime: number;
-    genres: { id: number; name: string }[];
-    tagline: string;
-    backdrop_path: string;
-}
-
 export interface SkeletonListProps {
     count: number;
 }
 
 export interface SimilarProps {
-    id: string;
+    id: number;
 }
 
 export interface CardProps {
@@ -76,4 +78,27 @@ export interface Videos {
     key: string;
     name: string;
     type: string;
+}
+
+export interface Season {
+    air_date: string;
+    episode_count: number;
+    id: number;
+    name: string;
+    overview: string;
+    poster_path: string;
+    season_number: number;
+    vote_average: number;
+}
+
+export interface Episode {
+    air_date: string;
+    episode_number: number;
+    name: string;
+    id: number;
+    overview: string;
+    runtime: number;
+    season_number: number;
+    still_path: string;
+    vote_average: number;
 }

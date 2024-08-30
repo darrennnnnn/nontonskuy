@@ -3,11 +3,12 @@ import { URL, API_KEY } from "@/lib/url";
 import { NextRequest } from "next/server";
 
 export async function GET(request: NextRequest) {
-    const idParams = request.nextUrl.searchParams;
-    const query = idParams.get("id");
+    const params = request.nextUrl.searchParams;
+    const idQuery = params.get("id");
+    const typeQuery = params.get("type");
 
     const res = await axios.get(
-        `${URL}/movie/${query}/videos?api_key=${API_KEY}&language=en-US`
+        `${URL}/${typeQuery}/${idQuery}/videos?api_key=${API_KEY}&language=en-US`
     );
 
     return Response.json(res.data);

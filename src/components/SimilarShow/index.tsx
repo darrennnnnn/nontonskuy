@@ -28,7 +28,7 @@ export default function SimilarShow({ id }: Readonly<SimilarProps>) {
     return (
         <div className="my-8">
             <h3 className="scroll-m-20 text-2xl font-semibold tracking-tight my-3">
-                Similar Movies
+                Similar Shows
             </h3>
             <div className="flex justify-center">
                 {loading ? (

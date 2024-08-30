@@ -3,8 +3,8 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { Movie } from "@/lib/types";
-import SkeletonList from "../SkeletonList";
-import CardList from "../CardList";
+import SkeletonList from "@/components/SkeletonList";
+import CardList from "@/components/CardList";
 
 export default function Upcoming() {
     const [content, setContent] = useState<Movie[]>([]);

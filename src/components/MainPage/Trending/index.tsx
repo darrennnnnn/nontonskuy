@@ -1,12 +1,12 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import CardList from "../CardList";
-import { Button } from "../ui/button";
+import CardList from "@/components/CardList";
+import { Button } from "@/components/ui/button";
 import axios from "axios";
 import { Clapperboard, Tv } from "lucide-react";
 import { Movie, Shows } from "@/lib/types";
-import SkeletonList from "../SkeletonList";
+import SkeletonList from "@/components/SkeletonList";
 
 export default function Trending() {
     const [content, setContent] = useState<(Movie | Shows)[]>([]);
