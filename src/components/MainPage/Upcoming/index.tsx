@@ -3,7 +3,6 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { Movie } from "@/lib/types";
-import SkeletonList from "@/components/SkeletonList";
 import CardList from "@/components/CardList";
 
 export default function Upcoming() {
@@ -31,11 +30,12 @@ export default function Upcoming() {
                 Coming Soon
             </h3>
             <div className="flex justify-center">
-                {loading ? (
-                    <SkeletonList count={20} />
-                ) : (
-                    <CardList content={content} isMovie={true} />
-                )}
+                <CardList
+                    content={content}
+                    isMovie={true}
+                    count={20}
+                    loading={loading}
+                />
             </div>
         </div>
     );

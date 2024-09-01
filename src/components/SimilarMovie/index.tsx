@@ -3,7 +3,6 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { Movie, SimilarProps } from "@/lib/types";
-import SkeletonList from "../SkeletonList";
 import CardList from "../CardList";
 
 export default function SimilarMovie({ id }: Readonly<SimilarProps>) {
@@ -31,11 +30,12 @@ export default function SimilarMovie({ id }: Readonly<SimilarProps>) {
                 Similar Movies
             </h3>
             <div className="flex justify-center">
-                {loading ? (
-                    <SkeletonList count={20} />
-                ) : (
-                    <CardList content={similar} isMovie={true} />
-                )}
+                <CardList
+                    content={similar}
+                    isMovie={true}
+                    count={20}
+                    loading={loading}
+                />
             </div>
         </div>
     );

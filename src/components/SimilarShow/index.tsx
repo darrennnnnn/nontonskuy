@@ -3,7 +3,6 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { Shows, SimilarProps } from "@/lib/types";
-import SkeletonList from "../SkeletonList";
 import CardList from "../CardList";
 
 export default function SimilarShow({ id }: Readonly<SimilarProps>) {
@@ -31,11 +30,12 @@ export default function SimilarShow({ id }: Readonly<SimilarProps>) {
                 Similar Shows
             </h3>
             <div className="flex justify-center">
-                {loading ? (
-                    <SkeletonList count={20} />
-                ) : (
-                    <CardList content={similar} isMovie={false} />
-                )}
+                <CardList
+                    content={similar}
+                    isMovie={false}
+                    count={20}
+                    loading={loading}
+                />
             </div>
         </div>
     );

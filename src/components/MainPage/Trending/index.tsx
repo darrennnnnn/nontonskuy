@@ -6,7 +6,6 @@ import { Button } from "@/components/ui/button";
 import axios from "axios";
 import { Clapperboard, Tv } from "lucide-react";
 import { Movie, Shows } from "@/lib/types";
-import SkeletonList from "@/components/SkeletonList";
 
 export default function Trending() {
     const [content, setContent] = useState<(Movie | Shows)[]>([]);
@@ -64,11 +63,12 @@ export default function Trending() {
                 </div>
             </div>
             <div className="flex justify-center">
-                {loading ? (
-                    <SkeletonList count={20} />
-                ) : (
-                    <CardList content={content} isMovie={isMovie} />
-                )}
+                <CardList
+                    content={content}
+                    isMovie={true}
+                    count={20}
+                    loading={loading}
+                />
             </div>
         </div>
     );
