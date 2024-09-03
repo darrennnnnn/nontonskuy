@@ -29,7 +29,7 @@ export default function Searched({
         };
         setLoading(true);
         fetchTrending();
-    }, []);
+    }, [searchQuery]);
 
     return (
         <div className="w-full my-10">

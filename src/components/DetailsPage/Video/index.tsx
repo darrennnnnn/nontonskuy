@@ -53,7 +53,7 @@ export default function Video({ id, isMovie }: Readonly<VideoProps>) {
         };
         setLoading(true);
         fetchDetails();
-    }, [id]);
+    }, [id, isMovie]);
 
     if (loading) {
         return (
