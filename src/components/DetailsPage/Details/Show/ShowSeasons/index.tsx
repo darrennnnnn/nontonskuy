@@ -69,6 +69,7 @@ export default function ShowSeasons({ id }: Readonly<ShowSeasonsProps>) {
                         <HoverCard key={season.id}>
                             <HoverCardTrigger asChild>
                                 <Button
+                                    size="sm"
                                     variant={
                                         season.season_number === selectedSeason
                                             ? "default"
@@ -83,35 +84,37 @@ export default function ShowSeasons({ id }: Readonly<ShowSeasonsProps>) {
                                 </Button>
                             </HoverCardTrigger>
                             <HoverCardContent>
-                                <div className="flex flex-col justify-between items-center">
-                                    <h4 className="text-sm font-semibold">
-                                        {}
-                                    </h4>
-                                    <p className="text-sm font-bold">
-                                        {season.name}
-                                    </p>
-                                    <Image
-                                        src={`https://image.tmdb.org/t/p/w500/${season.poster_path}`}
-                                        alt={season.name}
-                                        width={240}
-                                        height={350}
-                                        className="aspect-[2/3] my-1"
-                                    />
-                                    <small className="text-sm font-medium leading-none">
-                                        {`Episodes : ${season.episode_count}`}
-                                    </small>
-                                </div>
+                                {season.episode_count === 0 ? (
+                                    <div>No Content Found</div>
+                                ) : (
+                                    <div className="flex flex-col justify-between items-center">
+                                        <p className="text-sm font-bold">
+                                            {season.name}
+                                        </p>
+                                        <Image
+                                            src={`https://image.tmdb.org/t/p/w500/${season.poster_path}`}
+                                            alt={season.name}
+                                            width={240}
+                                            height={350}
+                                            className="aspect-[2/3] my-1"
+                                        />
+                                        <small className="text-sm font-medium leading-none">
+                                            {`Episodes : ${season.episode_count}`}
+                                        </small>
+                                    </div>
+                                )}
                             </HoverCardContent>
                         </HoverCard>
                     ))}
                 </div>
                 <ScrollBar orientation="horizontal" />
             </ScrollArea>
-            <ScrollArea className="w-full whitespace-normal rounded-md border h-96">
-                <div className="flex w-max space-x-4 p-4">
-                    <div className="flex flex-col gap-3">
-                        {seasonDetails?.map((item) => {
-                            return (
+
+            {seasonDetails?.length ? (
+                <ScrollArea className="w-full whitespace-normal rounded-md border h-96">
+                    <div className="flex w-max space-x-4 p-4">
+                        <div className="flex flex-col gap-3">
+                            {seasonDetails.map((item) => (
                                 <div key={item.id} className="flex gap-3">
                                     <Image
                                         src={`https://image.tmdb.org/t/p/w500/${item.still_path}`}
@@ -134,7 +137,6 @@ export default function ShowSeasons({ id }: Readonly<ShowSeasonsProps>) {
                                                 {item.runtime} min
                                             </p>
                                         </div>
-
                                         <div>
                                             <small className="text-sm font-medium leading-none">
                                                 {item.overview}
@@ -143,11 +145,15 @@ export default function ShowSeasons({ id }: Readonly<ShowSeasonsProps>) {
                                         <div></div>
                                     </div>
                                 </div>
-                            );
-                        })}
+                            ))}
+                        </div>
                     </div>
-                </div>
-            </ScrollArea>
+                </ScrollArea>
+            ) : (
+                <h3 className="scroll-m-20 text-2xl font-semibold tracking-tight">
+                    ❗No Content Found❗
+                </h3>
+            )}
         </div>
     );
 }

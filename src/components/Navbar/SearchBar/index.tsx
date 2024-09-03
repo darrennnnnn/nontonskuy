@@ -9,6 +9,7 @@ export default function SearchBar() {
     const handleSubmit = (e: React.ChangeEvent<HTMLFormElement>) => {
         e.preventDefault();
         router.push("/search/" + route);
+        setRoute("");
     };
 
     return (
