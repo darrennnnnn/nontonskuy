@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from "react";
 import axios from "axios";
-import MovieCard from "@/components/MovieCard";
+import MovieCard from "@/components/Card/MovieCard";
 import { Movie } from "@/lib/types";
 
 export default function Searched({

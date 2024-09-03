@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import CardList from "@/components/CardList";
+import CardList from "@/components/Card/CardList";
 import { Button } from "@/components/ui/button";
 import axios from "axios";
 import { Clapperboard, Tv } from "lucide-react";
@@ -65,7 +65,7 @@ export default function Trending() {
             <div className="flex justify-center">
                 <CardList
                     content={content}
-                    isMovie={true}
+                    isMovie={isMovie}
                     count={20}
                     loading={loading}
                 />

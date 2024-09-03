@@ -70,7 +70,7 @@ export interface CardProps {
 export interface CardListProps {
     content: (Movie | Shows)[];
     isMovie: boolean;
-    count: number
+    count: number;
     loading: boolean;
 }
 

@@ -13,7 +13,7 @@ interface DetailsProps {
     id: number;
 }
 
-export default function ShowDetailsComponent({ id }: { readonly id: number }) {
+export default function ShowDetailsComponent({ id }: Readonly<DetailsProps>) {
     const [details, setDetails] = useState<ShowDetails | null>(null);
     const [loading, setLoading] = useState(true);
 
@@ -22,10 +22,10 @@ export default function ShowDetailsComponent({ id }: { readonly id: number }) {
     useEffect(() => {
         const fetchDetails = async () => {
             try {
-                const movieResponse = await axios.get(
+                const showResponse = await axios.get(
                     `/api/shows/details?id=${id}`
                 );
-                setDetails(movieResponse.data);
+                setDetails(showResponse.data);
                 setLoading(false);
             } catch (error) {
                 console.log(error);
@@ -74,6 +74,10 @@ export default function ShowDetailsComponent({ id }: { readonly id: number }) {
                                 &#41;
                             </h3>
                         </div>
+                        <h4 className="scroll-m-20 text-xl font-bold tracking-tight">
+                            {details?.number_of_seasons} Seasons &#x2022;{" "}
+                            {details?.number_of_episodes} Episodes
+                        </h4>
                         <div className="flex items-center gap-3 mt-2">
                             <div className="flex items-center gap-1">
                                 <FaStar />

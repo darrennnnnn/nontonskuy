@@ -19,7 +19,7 @@ export default function MovieCard({
     return (
         <div className=" border border-solid rounded-md w-44 p-2 transform transition-transform hover:scale-105">
             <Link href={`${movieOrShowLink}/${id}`}>
-                <Image src={imageUrl} alt={title} width={240} height={350} />
+                <Image src={imageUrl} alt={title} width={240} height={350} className="aspect-[2/3]"/>
                 <p className="line-clamp-1 mt-1 font-medium text-sm">{title}</p>
                 <div className="flex justify-between">
                     <p className="text-muted-foreground text-xs">{year}</p>

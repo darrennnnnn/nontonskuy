@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { Movie, SimilarProps } from "@/lib/types";
-import CardList from "../CardList";
+import CardList from "../Card/CardList";
 
 export default function SimilarMovie({ id }: Readonly<SimilarProps>) {
     const [similar, setSimilar] = useState<Movie[]>([]);

@@ -11,7 +11,7 @@ import {
     PaginationNext,
     PaginationPrevious,
 } from "@/components/ui/pagination";
-import MovieCard from "@/components/MovieCard";
+import MovieCard from "@/components/Card/MovieCard";
 import { Movie } from "@/lib/types";
 
 export default function MoviePage() {

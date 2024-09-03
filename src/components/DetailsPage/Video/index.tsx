@@ -25,11 +25,15 @@ export default function Video({ id, isMovie }: Readonly<VideoProps>) {
     const [loading, setLoading] = useState(true);
 
     const filteredVideo = video
-        ? video.filter(
-              (item) =>
+        ? video.filter((item) => {
+              if (!isMovie) {
+                  return item.site.toLowerCase() === "youtube";
+              }
+              return (
                   item.official === true &&
                   item.site.toLowerCase() === "youtube"
-          )
+              );
+          })
         : [];
 
     const usableVideo = filteredVideo.toReversed();
@@ -60,11 +64,11 @@ export default function Video({ id, isMovie }: Readonly<VideoProps>) {
     }
 
     return (
-        <div className="my-8">
-            <h3 className="scroll-m-20 text-2xl font-semibold tracking-tight mx-4 my-3">
+        <div className="w-full p-8">
+            <h3 className="scroll-m-20 text-2xl font-semibold tracking-tight my-3">
                 Videos
             </h3>
-            <ScrollArea className="w-[1500px] whitespace-nowrap rounded-md border">
+            <ScrollArea className="w-full whitespace-nowrap rounded-md border">
                 <div className="flex w-max space-x-2 p-4">
                     {usableVideo.map((item) => (
                         <Dialog key={item.key}>
