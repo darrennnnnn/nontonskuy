@@ -8,6 +8,7 @@ import { LoaderCircle } from "lucide-react";
 import { MovieDetails } from "@/lib/types";
 import Link from "next/link";
 import { FaStar } from "react-icons/fa";
+import { formatDate } from "@/lib/date";
 
 interface DetailsProps {
     id: number;
@@ -86,8 +87,10 @@ export default function MovieDetailsComponent({ id }: { readonly id: number }) {
 
                             <div>
                                 <p className="leading-7">
-                                    {details?.release_date} &#x2022;{" "}
-                                    {formattedRuntime}
+                                    {details?.release_date
+                                        ? formatDate(details.release_date)
+                                        : "Date not available"}{" "}
+                                    &#x2022; {formattedRuntime}
                                 </p>
                             </div>
                         </div>

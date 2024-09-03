@@ -8,6 +8,7 @@ import { LoaderCircle } from "lucide-react";
 import { ShowDetails } from "@/lib/types";
 import Link from "next/link";
 import { FaStar } from "react-icons/fa";
+import { formatDate } from "@/lib/date";
 
 interface DetailsProps {
     id: number;
@@ -86,7 +87,9 @@ export default function ShowDetailsComponent({ id }: Readonly<DetailsProps>) {
 
                             <div>
                                 <p className="leading-7">
-                                    {details?.first_air_date}
+                                    {details?.first_air_date
+                                        ? formatDate(details.first_air_date)
+                                        : "Date not available"}
                                 </p>
                             </div>
                         </div>

@@ -2,6 +2,7 @@
 
 import axios from "axios";
 import Image from "next/image";
+import { formatDate } from "@/lib/date";
 import { Episode, ShowDetails } from "@/lib/types";
 import { useState, useEffect } from "react";
 import { LoaderCircle } from "lucide-react";
@@ -136,13 +137,15 @@ export default function ShowSeasons({ id }: Readonly<ShowSeasonsProps>) {
                                             <p className="text-sm text-muted-foreground">
                                                 {item.runtime} min
                                             </p>
+                                            <p className="text-sm text-muted-foreground">
+                                                {formatDate(item.air_date)}
+                                            </p>
                                         </div>
                                         <div>
                                             <small className="text-sm font-medium leading-none">
                                                 {item.overview}
                                             </small>
                                         </div>
-                                        <div></div>
                                     </div>
                                 </div>
                             ))}
