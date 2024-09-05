@@ -3,12 +3,23 @@ import { NextRequest } from "next/server";
 import { URL, API_KEY } from "@/lib/url";
 
 export async function GET(request: NextRequest) {
-    const strParams = request.nextUrl.searchParams;
-    const query = strParams.get("str");
+    const params = request.nextUrl.searchParams;
+    const strQuery = params.get("str");
+    const moviePageQuery = params.get("moviePage");
+    const tvPageQuery = params.get("tvPage");
 
-    const res = await axios.get(
-        `${URL}/search/movie?query=${query}&api_key=${API_KEY}&region=US`
-    );
+    const movieSearchURL = `${URL}/search/movie?query=${strQuery}&page=${moviePageQuery}&api_key=${API_KEY}&region=US`;
+    const tvSearchURL = `${URL}/search/tv?query=${strQuery}&page=${tvPageQuery}&api_key=${API_KEY}&region=US`;
 
-    return Response.json(res.data.results);
+    const [movieResponse, tvResponse] = await Promise.all([
+        axios.get(movieSearchURL),
+        axios.get(tvSearchURL),
+    ]);
+
+    const res = {
+        movies: movieResponse.data,
+        tv: tvResponse.data,
+    };
+
+    return Response.json(res);
 }

@@ -22,18 +22,18 @@ export default function ShowDetailsComponent({ id }: Readonly<DetailsProps>) {
 
     useEffect(() => {
         const fetchDetails = async () => {
+            setLoading(true);
             try {
                 const showResponse = await axios.get(
                     `/api/shows/details?id=${id}`
                 );
                 setDetails(showResponse.data);
-                setLoading(false);
             } catch (error) {
                 console.log(error);
+            } finally {
                 setLoading(false);
             }
         };
-        setLoading(true);
         fetchDetails();
     }, [id]);
 

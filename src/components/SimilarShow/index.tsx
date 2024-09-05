@@ -11,16 +11,16 @@ export default function SimilarShow({ id }: Readonly<SimilarProps>) {
 
     useEffect(() => {
         const fetchSimilar = async () => {
+            setLoading(true);
             try {
                 const response = await axios.get(`/api/similarshow?id=${id}`);
                 setSimilar(response.data);
-                setLoading(false);
             } catch (error) {
                 console.log(error);
+            } finally {
                 setLoading(false);
             }
         };
-        setLoading(true);
         fetchSimilar();
     }, [id]);
 

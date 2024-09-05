@@ -14,19 +14,19 @@ export default function Trending() {
 
     useEffect(() => {
         const fetchTrending = async () => {
+            setLoading(true);
             try {
                 const endpoint = isMovie ? "movie" : "tv";
                 const response = await axios.get(
                     `/api/trending?type=${endpoint}`
                 );
                 setContent(response.data);
-                setLoading(false);
             } catch (error) {
                 console.log(error);
+            } finally {
                 setLoading(false);
             }
         };
-        setLoading(true);
         fetchTrending();
     }, [isMovie]);
 

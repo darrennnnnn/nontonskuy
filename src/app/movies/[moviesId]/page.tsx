@@ -2,7 +2,7 @@ import Video from "@/components/DetailsPage/Video";
 import MovieDetailsComponent from "@/components/DetailsPage/Details/Movie";
 import SimilarMovie from "@/components/SimilarMovie";
 
-export default function MovieInfo({
+export default function MovieInfoPage({
     params,
 }: {
     readonly params: { moviesId: number };

@@ -26,18 +26,18 @@ export default function MovieDetailsComponent({ id }: { readonly id: number }) {
 
     useEffect(() => {
         const fetchDetails = async () => {
+            setLoading(true);
             try {
                 const movieResponse = await axios.get(
                     `/api/movie/details?id=${id}`
                 );
                 setDetails(movieResponse.data);
-                setLoading(false);
             } catch (error) {
                 console.log(error);
+            } finally {
                 setLoading(false);
             }
         };
-        setLoading(true);
         fetchDetails();
     }, [id]);
 

@@ -3,7 +3,7 @@ import SimilarShow from "@/components/SimilarShow";
 import ShowDetailsComponent from "@/components/DetailsPage/Details/Show";
 import ShowSeasons from "@/components/DetailsPage/Details/Show/ShowSeasons";
 
-export default function ShowInfo({
+export default function ShowInfoPage({
     params,
 }: {
     readonly params: { showsId: number };

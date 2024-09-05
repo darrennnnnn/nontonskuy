@@ -40,18 +40,18 @@ export default function Video({ id, isMovie }: Readonly<VideoProps>) {
 
     useEffect(() => {
         const fetchDetails = async () => {
+            setLoading(true);
             try {
                 const videoResponse = await axios.get(
                     `/api/video?id=${id}&type=${isMovie ? "movie" : "tv"}`
                 );
                 setVideo(videoResponse.data.results);
-                setLoading(false);
             } catch (error) {
                 console.log(error);
+            } finally {
                 setLoading(false);
             }
         };
-        setLoading(true);
         fetchDetails();
     }, [id, isMovie]);
 

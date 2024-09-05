@@ -11,16 +11,16 @@ export default function Upcoming() {
 
     useEffect(() => {
         const fetchUpcoming = async () => {
+            setLoading(true);
             try {
                 const response = await axios.get("/api/upcoming");
                 setContent(response.data);
-                setLoading(false);
             } catch (error) {
                 console.log(error);
+            } finally {
                 setLoading(false);
             }
         };
-        setLoading(true);
         fetchUpcoming();
     }, []);
 

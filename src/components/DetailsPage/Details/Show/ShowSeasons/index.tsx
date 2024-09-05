@@ -26,6 +26,7 @@ export default function ShowSeasons({ id }: Readonly<ShowSeasonsProps>) {
 
     useEffect(() => {
         const fetchDetails = async () => {
+            setLoading(true);
             try {
                 const seasonResponse = await axios.get(
                     `/api/shows/details/seasons?id=${id}&season=${selectedSeason}`
@@ -36,13 +37,12 @@ export default function ShowSeasons({ id }: Readonly<ShowSeasonsProps>) {
                 setSeasonDetails(seasonResponse.data);
                 console.log(seasonResponse.data);
                 setDetails(showResponse.data);
-                setLoading(false);
             } catch (error) {
                 console.log(error);
+            } finally {
                 setLoading(false);
             }
         };
-        setLoading(true);
         fetchDetails();
     }, [id, selectedSeason]);
 

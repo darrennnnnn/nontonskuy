@@ -22,16 +22,16 @@ export function PlayingNow() {
 
     useEffect(() => {
         const fetchNowPlaying = async () => {
+            setLoading(true);
             try {
                 const response = await axios.get("/api/playingnow");
                 setContent(response.data);
-                setLoading(false);
             } catch (error) {
                 console.log(error);
+            } finally {
                 setLoading(false);
             }
         };
-        setLoading(true);
         fetchNowPlaying();
     }, []);
 
