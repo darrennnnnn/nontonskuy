@@ -21,6 +21,7 @@ export default function TopRated({ isMovie }: { readonly isMovie: boolean }) {
                 );
                 setContent(response.data.results);
                 setTotalPages(response.data.total_pages);
+                console.log(response.data.results);
             } catch (error) {
                 console.log(error);
             } finally {

@@ -9,6 +9,6 @@ export async function GET(request: NextRequest) {
     const res = await axios.get(
         `${URL}/trending/${query}/week?api_key=${API_KEY}&region=US`
     );
-
+    
     return Response.json(res.data.results);
 }
