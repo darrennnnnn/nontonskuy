@@ -2,12 +2,6 @@ import { auth, signOut } from "@/auth";
 import { Avatar, AvatarFallback, AvatarImage } from "../ui/avatar";
 import Link from "next/link";
 import { Button } from "../ui/button";
-import {
-    Tooltip,
-    TooltipContent,
-    TooltipProvider,
-    TooltipTrigger,
-} from "@/components/ui/tooltip";
 import { IoLogOutOutline } from "react-icons/io5";
 import { ModeToggle } from "../ModeToggle";
 import {
@@ -17,7 +11,17 @@ import {
 } from "@/components/ui/popover";
 import { Separator } from "@/components/ui/separator";
 import { CgProfile } from "react-icons/cg";
-import { link } from "fs";
+import {
+    AlertDialog,
+    AlertDialogAction,
+    AlertDialogCancel,
+    AlertDialogContent,
+    AlertDialogDescription,
+    AlertDialogFooter,
+    AlertDialogHeader,
+    AlertDialogTitle,
+    AlertDialogTrigger,
+} from "@/components/ui/alert-dialog";
 
 const menuOptions = [
     {
@@ -75,23 +79,53 @@ export default async function UserAvatar() {
                             </Link>
                         ))}
                         <Separator />
-                        <form
+                        {/* <form
                             action={async () => {
                                 "use server";
                                 await signOut();
                             }}
-                        >
-                            <Button
-                                variant={"destructive"}
-                                size={"sm"}
-                                type="submit"
-                            >
-                                <div className="flex items-center gap-1">
-                                    <div>Sign Out</div>
-                                    <IoLogOutOutline className="w-5 h-5" />
-                                </div>
-                            </Button>
-                        </form>
+                        > */}
+                        <AlertDialog>
+                            <AlertDialogTrigger asChild>
+                                <Button
+                                    variant={"destructive"}
+                                    size={"sm"}
+                                    type="submit"
+                                >
+                                    <div className="flex items-center gap-1">
+                                        <div>Sign Out</div>
+                                        <IoLogOutOutline className="w-5 h-5" />
+                                    </div>
+                                </Button>
+                            </AlertDialogTrigger>
+                            <AlertDialogContent>
+                                <AlertDialogHeader>
+                                    <AlertDialogTitle>
+                                        Ready to Sign Out?
+                                    </AlertDialogTitle>
+                                    <AlertDialogDescription>
+                                        You will be signed out of your account
+                                        once you proceed.
+                                    </AlertDialogDescription>
+                                </AlertDialogHeader>
+                                <AlertDialogFooter>
+                                    <AlertDialogCancel>
+                                        Cancel
+                                    </AlertDialogCancel>
+                                    <AlertDialogAction>
+                                        <form
+                                            action={async () => {
+                                                "use server";
+                                                await signOut();
+                                            }}
+                                        >
+                                            <Button>Sign Out</Button>
+                                        </form>
+                                    </AlertDialogAction>
+                                </AlertDialogFooter>
+                            </AlertDialogContent>
+                        </AlertDialog>
+                        {/* </form> */}
                     </PopoverContent>
                 </Popover>
             ) : (
