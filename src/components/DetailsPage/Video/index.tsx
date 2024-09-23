@@ -91,7 +91,7 @@ export default function Video({ id, isMovie }: Readonly<VideoProps>) {
                                     </figcaption>
                                 </figure>
                             </DialogTrigger>
-                            <DialogContent className="max-w-screen-2xl">
+                            <DialogContent className="max-w-screen-lg">
                                 <DialogHeader>
                                     <DialogTitle>{item.name}</DialogTitle>
                                     <DialogDescription>
