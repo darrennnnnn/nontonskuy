@@ -1,7 +1,6 @@
 import Trending from "@/components/MainPage/Trending";
 import Upcoming from "@/components/MainPage/Upcoming";
 import { PlayingNow } from "@/components/MainPage/PlayingNow";
-import UserAvatar from "@/components/UserAvatar";
 
 export default function Home() {
     return (

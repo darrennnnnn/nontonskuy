@@ -14,10 +14,10 @@ export default function SearchBar() {
     };
 
     return (
-        <div className="transform transition-transform focus-within:scale-105">
+        <div className="transform transition-transform focus-within:scale-105 bg-red-400">
             <form
                 onSubmit={handleSubmit}
-                className="flex items-center space-x-2"
+                className="flex items-center"
             >
                 <div className="relative flex items-center">
                     <IoSearch className="absolute left-5 text-sm font-medium leading-none text-muted-foreground" />
@@ -29,7 +29,7 @@ export default function SearchBar() {
                     onChange={(e) => {
                         setRoute(e.target.value);
                     }}
-                    className="pl-8"
+                    className="pl-10"
                 />
             </form>
         </div>
