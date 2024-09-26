@@ -20,7 +20,6 @@ export default function Navbar({
     return (
         <div className="flex border-b w-full px-4 md:px-6 lg:px-8 sticky z-50 top-0 backdrop-blur-sm">
             <nav className="flex justify-between items-center w-full mx-auto max-w-screen-2xl h-16">
-                {/* Logo on the left */}
                 <div className="flex-shrink-0">
                     <p className="font-extrabold text-base sm:text-xl lg:text-2xl bg-gradient-to-r from-indigo-500 from-1% via-sky-500 via-30% to-emerald-500 to-90% text-transparent bg-clip-text">
                         NONTONSKUY

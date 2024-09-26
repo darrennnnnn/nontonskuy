@@ -14,7 +14,7 @@ export default function SearchBar() {
     };
 
     return (
-        <div className="transform transition-transform focus-within:scale-105 bg-red-400">
+        <div className="transform transition-transform focus-within:scale-105">
             <form
                 onSubmit={handleSubmit}
                 className="flex items-center"
